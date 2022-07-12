@@ -6,23 +6,33 @@
 //problem 3: swap second computer for real player with a typing prompt. set case sensitivity to false.
 
 //problem 4: create a function that plays 5 rounds, keeping score to determine a final winner. console.log you wins
-function computerPlay() {
-    return Math.floor(Math.random()*3)+1;
-}
-const computerSelection = computerPlay();
-if (computerSelection == 1) {
-    console.log('Computer has played rock!')
-}
- else if (computerSelection == 2) {
-    console.log('Computer has played paper!')
- }
- else if (computerSelection == 3) {
-    console.log('Computer has played scissors!')
- }
 
+
+const computerSelection = Math.floor(Math.random()*3)+1;
+function computerPlay() {
+
+    if (computerSelection == 1) {
+        console.log('Computer has played rock!')
+        return computerSelection
+    }
+     else if (computerSelection == 2) {
+        console.log('Computer has played paper!')
+        return computerSelection
+     }
+     else if (computerSelection == 3) {
+        console.log('Computer has played scissors!')
+        return computerSelection
+     }
+}
+
+let playerEntry = window.prompt(
+    'Type your selection! (rock, paper, or scissors');
+    console.log(playerEntry)
+let playerSelection = playerEntry.toLowerCase();
+console.log(playerSelection)
  function playerPlay() {
-   // return computerPlay()
-   let playerSelection = window.prompt('Type your selection! (rock, paper, or scissors');
+    
+   
    if (playerSelection == 'rock') {
     console.log('Player has played rock!')
     playerSelection = 1;
@@ -46,18 +56,17 @@ if (computerSelection == 1) {
 
 let playerPoints = 0;
 let computerPoints = 0;
-playerSelection = playerPlay();
-console.log(playerSelection)
-determineWinner()
 
-function determineWinner() {
-   console.log()
+
+
+function playRound(computerSelection, playerSelection) {
+   console.log(computerSelection, playerSelection)
     if (computerSelection === playerSelection) {
         console.log('It\'s a draw!');
     }
     else if (playerSelection == 1 && computerSelection == 2) {
         computerPoints += 1;
-        console.log('Computer wins! Paper beats Rock!')
+        alert('Computer wins! Paper beats rock!')
     }
     else if (playerSelection == 2 && computerSelection == 3) {
         computerPoints += 1;
@@ -80,8 +89,11 @@ function determineWinner() {
         console.log('Player wins! Paper beats rock!')
     }
     else {
-        console.log('idk-')
+        console.log('idk')
     }
 
 }
-console.log(computerSelection, playerPoints, computerPoints);
+playerPlay()
+computerPlay();
+playRound(computerSelection, playerSelection);
+console.log(playerPoints, computerPoints);
