@@ -9,7 +9,7 @@
 function computerPlay() {
     return Math.floor(Math.random()*3)+1;
 }
-var computerSelection = computerPlay();
+const computerSelection = computerPlay();
 if (computerSelection == 1) {
     console.log('Computer has played rock!')
 }
@@ -21,32 +21,67 @@ if (computerSelection == 1) {
  }
 
  function playerPlay() {
-    return computerPlay()
- }
- var playerSelection = playerPlay();
- if (playerSelection == 1) {
+   // return computerPlay()
+   let playerSelection = window.prompt('Type your selection! (rock, paper, or scissors');
+   if (playerSelection == 'rock') {
     console.log('Player has played rock!')
-}
- else if (playerSelection == 2) {
+    playerSelection = 1;
+    console.log(playerSelection)
+    return playerSelection
+    }
+    else if (playerSelection == 'paper') {
     console.log('Player has played paper!')
- }
- else if (playerSelection == 3) {
+    playerSelection = 2;
+    console.log(playerSelection)
+    return playerSelection
+    }
+    else if (playerSelection == 'scissors') {
     console.log('Player has played scissors!')
+    playerSelection = 3;
+    console.log(playerSelection)
+    return playerSelection
+    }
  }
 //could probably turn these into a function with ${x} style strings
-var playerPoints = 0
-var computerPoints = 0
+
+let playerPoints = 0;
+let computerPoints = 0;
+playerSelection = playerPlay();
+console.log(playerSelection)
+determineWinner()
 
 function determineWinner() {
+   console.log()
     if (computerSelection === playerSelection) {
         console.log('It\'s a draw!');
     }
     else if (playerSelection == 1 && computerSelection == 2) {
-        computerPoints + 1;
+        computerPoints += 1;
+        console.log('Computer wins! Paper beats Rock!')
     }
     else if (playerSelection == 2 && computerSelection == 3) {
-        computerPoints + 1;
+        computerPoints += 1;
+        console.log('Computer wins! Scissors beats paper!')
     }
-}
+    else if (playerSelection == 3 && computerSelection == 1) {
+        computerPoints += 1;
+        console.log('Computer wins! Rock beats scissors!')
+    } 
+    else if (playerSelection == 3 && computerSelection == 2) {
+        playerPoints += 1;
+        console.log('Player wins! Scissors beats paper!')
+    }
+    else if (playerSelection == 1 && computerSelection == 3) {
+        playerPoints += 1;
+        console.log('Player wins! Rock beats scissors!')
+    }
+    else if (playerSelection == 2 && computerSelection == 1) {
+        playerPoints += 1;
+        console.log('Player wins! Paper beats rock!')
+    }
+    else {
+        console.log('idk-')
+    }
 
-console.log(computerSelection, playerSelection);
+}
+console.log(computerSelection, playerPoints, computerPoints);
