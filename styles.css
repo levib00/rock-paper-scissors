@@ -1,0 +1,42 @@
+body {
+    color:rgb(212, 214, 218) ;
+}
+.upper-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+    font-size: 32px;
+    height: 300px;
+}
+.buttonContainer {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+body {
+    background-color:rgb(15, 49, 163);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+button {
+    width: 100px;
+    height: 100px;
+    font-size: 18px;
+    border-width: 5px;
+    border-color: rgb(43, 135, 43);
+    border-style:solid;
+    background-color: rgb(85, 24, 143);
+    color:rgb(212, 214, 218);
+    cursor: pointer;
+}
+#results-container {
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 10px;
+    text-align: center;
+}
