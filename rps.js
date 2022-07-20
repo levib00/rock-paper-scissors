@@ -1,14 +1,34 @@
 let playerPoints = 0;
 let computerPoints = 0;
+let lastPoint = false;
 
-const button = document.querySelectorAll('button');
+document.getElementById("play-again").style.visibility = 'hidden';
+
+const againBtn = document.querySelector('#play-again');
+againBtn.addEventListener('click', () => {
+    i = 1;
+    lastPoint = false
+    playerPoints = 0;
+    computerPoints = 0;
+    document.getElementById("match-results").innerHTML = '';
+    document.getElementById("rounds").innerHTML = '';
+    document.getElementById("player-choice").innerHTML = '';
+    document.getElementById("cpu-choice").innerHTML =  '';
+    document.getElementById("round-results").innerHTML = '';
+    document.getElementById("score").innerHTML = `Player score: ${playerPoints} CPU score: ${computerPoints}`
+    document.getElementById("play-again").style.visibility = 'hidden';
+    
+})
+
+const button = document.querySelectorAll('.button');
 button.forEach((button) => {
 button.addEventListener('click', () => {
-    let playerEntry = button.id.toLowerCase()
-    roundCounter();
-    playRound(playerEntry);
-    winner()
-    
+    if (!lastPoint) {
+        let playerEntry = button.id.toLowerCase()
+        playRound(playerEntry);
+        roundCounter();
+        winner()
+    }
 });
 });
 
@@ -98,15 +118,28 @@ function roundCounter() {
 }
 document.getElementById("rounds").innerHTML = `Round ${i}!`
 
+function endScreen() {
+    document.getElementById("play-again").style.visibility = 'visible';
+    document.getElementById("play-again").style.alignSelf = 'center';
+    document.getElementById("rounds").innerHTML = `Game Over!`
+    document.getElementById("score").innerHTML = `Player score: ${playerPoints} CPU score: ${computerPoints}`
+}
+
 function winner() {
     if (playerPoints == 3 || computerPoints == 3) {
         if (playerPoints > computerPoints) {
             document.getElementById("match-results").innerHTML = 'You win this match! Good Job!'
+            lastPoint = true;
+            endScreen()
         }
         else if (playerPoints < computerPoints) {
             document.getElementById("match-results").innerHTML = 'you lose this match! Maybe next Time!'
+            lastPoint = true
+            endScreen()
         }
         else if (playerPoints === computerPoints)
-        document.getElementById("match-results").innerHTML = 'It\'s a draw this time!'
+            document.getElementById("match-results").innerHTML = 'It\'s a draw this time!'
+            lastPoint = true;
+            endScreen()
     }
 }

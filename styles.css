@@ -32,6 +32,10 @@ button {
     color:rgb(212, 214, 218);
     cursor: pointer;
 }
+#play-again {
+    height: 50px;
+    width: 200px;
+}
 #results-container {
     font-size: 24px;
     display: flex;
